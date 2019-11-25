@@ -60,7 +60,7 @@ int main(){
                         break;
                     case 3:
                         //apresentar todos os dados
-                        buscaPorId();//o Id aqui vai ser o codigo né?
+                        buscaPorId();//o Id aqui vai ser o codigo né? Sim é o cod
                         break;
                     case 4:
                         //apresentar todos os dados
@@ -73,6 +73,7 @@ int main(){
                         break;
                     case 6:
                         //aqui tbm seria legal perguntar se tem ctz pq né... nao vai ter volta
+                        //sim é melhor, 
                         removeContato();
 
                }
