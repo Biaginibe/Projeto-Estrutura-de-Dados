@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include "lista.h"
 
-struct elemento{
+typedef struct elemento{
     struct elemento *ant;
     struct elemento *prox;
     dados infos;
-}
-
-typedef struct elemento Elem;
+}Elem;
 
 Lista *criaLista(){
     Lista *li = (Lista*) malloc(sizeof(Lista));
@@ -18,7 +16,7 @@ Lista *criaLista(){
     return li;
 }
 
-void destroiLista(Lista li){
+void destroiLista(Lista *li){
     if(li != NULL){
         Elem *no;
         while((*li) != NULL){
@@ -38,7 +36,7 @@ int insereContato(Lista *li, dados cliente){
     if(no == NULL){
         return 0;
     }
-    no->dados = cliente;
+    no->infos = cliente;
     if(lista_vazia(li)){
         no->prox = NULL;
         no->ant = NULL;
@@ -46,7 +44,7 @@ int insereContato(Lista *li, dados cliente){
         return 1;
     }else{
         Elem *anterior, *atual = *li;
-        while(atual != NULL && atual->dados.codigo < cliente.codigo){
+        while(atual != NULL && atual->infos.codigo < cliente.codigo){
             anterior = atual;
             atual = atual->prox;
         }
@@ -85,7 +83,8 @@ int buscaPos(Lista *li, int pos, dados *cliente){
     if(li==NULL || pos<=0){
         return 0;
     }
-    Elem i=1;
+    Elem *no = *li;
+    int i = 1;
     while(no!=NULL && i<pos){
         no = no->prox;
         i++;
@@ -93,16 +92,16 @@ int buscaPos(Lista *li, int pos, dados *cliente){
     if(no==NULL){
         return 0;
     }else{
-        *al = no->dados;
+        *cliente = no->dados;
         return 1;
     }
 }
 
-void relatorioGeral(){
-    int pos = 0;
-    int tamanho =tamanhoLista(li);
+void relatorioGeral(Lista *li){
+    int pos = 0, i;
+    int tamanho = tamanhoLista(li);
     for(i=0;i<tamanho;i++){
-        x = buscaPos(li, pos, &cliente);
+        int x = buscaPos(li, pos, &cliente);
         if(x){
             printf("\nCódigo do Cliente: %d", cliente.id);
             printf("\nNome do Cliente: %s", cliente.nome);
@@ -116,7 +115,7 @@ void relatorioGeral(){
             printf("Erro na consulta\n");
         }
     }
-    
+
 }
 
 

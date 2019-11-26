@@ -1,4 +1,3 @@
-
 //estrutura de dados do cliente
 typedef struct dadoscliente{
     int codigo;
@@ -22,4 +21,4 @@ int tamanhoLista(Lista *li);
 
 int buscaPos(Lista *li, int pos, dados *cliente);
 
-void relatorioGeral();
+void relatorioGeral(Lista *li);
