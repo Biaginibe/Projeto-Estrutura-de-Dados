@@ -80,4 +80,43 @@ int tamanhoLista(Lista *li){
     return acum;
 }
 
+//Consulta baseado em uma determinada posição
+int buscaPos(Lista *li, int pos, dados *cliente){
+    if(li==NULL || pos<=0){
+        return 0;
+    }
+    Elem i=1;
+    while(no!=NULL && i<pos){
+        no = no->prox;
+        i++;
+    }
+    if(no==NULL){
+        return 0;
+    }else{
+        *al = no->dados;
+        return 1;
+    }
+}
+
+void relatorioGeral(){
+    int pos = 0;
+    int tamanho =tamanhoLista(li);
+    for(i=0;i<tamanho;i++){
+        x = buscaPos(li, pos, &cliente);
+        if(x){
+            printf("\nCódigo do Cliente: %d", cliente.id);
+            printf("\nNome do Cliente: %s", cliente.nome);
+            printf("\nEmpresa do Cliente:%s" cliente.empresa);
+            printf("\nDepartamento do Cliente: %s", cliente.departamento);
+            printf("\nTelefone do Cliente:%d ", cliente.telefone);
+            printf("\nCelular do Cliente:%d", cliente.celular);
+            printf("\nEmail do Cliente: %s\n", cliente.email);
+            pos++;
+        }else{
+            printf("Erro na consulta\n");
+        }
+    }
+    
+}
+
 

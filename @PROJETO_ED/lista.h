@@ -19,3 +19,7 @@ void destroiLista(Lista *li);
 int insereContato(Lista *li, dados cliente);
 
 int tamanhoLista(Lista *li);
+
+int buscaPos(Lista *li, int pos, dados *cliente);
+
+void relatorioGeral();
