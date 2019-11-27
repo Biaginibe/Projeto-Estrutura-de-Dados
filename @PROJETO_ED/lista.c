@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lista.h"
 
 typedef struct elemento{
@@ -64,7 +65,7 @@ int insereContato(Lista *li, dados cliente){
     }
     return 1;
 }
-
+//função tamanhoLista: encontra o total de elementos em uma lista
 int tamanhoLista(Lista *li){
     if(li == NULL){
         return 0;
@@ -78,9 +79,9 @@ int tamanhoLista(Lista *li){
     return acum;
 }
 
-//Consulta baseado em uma determinada posição
+//função buscaPos: procura um determinado elemento da lista com base numa posição previamente mostrada
 int buscaPos(Lista *li, int pos, dados *cliente){
-    if(li==NULL || pos<=0){
+    if(li == NULL || pos <= 0){//ta dando erro por causa do 'pos <= 0'
         return 0;
     }
     Elem *no = *li;
@@ -92,30 +93,124 @@ int buscaPos(Lista *li, int pos, dados *cliente){
     if(no==NULL){
         return 0;
     }else{
-        *cliente = no->dados;
+        *cliente = no->infos;
+        return 1;
+    }
+}
+//função relatorioGeral: executada dentro de um "for", busca todas as informações de um cliente
+//funciona como uma consulta por posição, e o valor da posição em si é alteraldo dentro do switch do programa principal
+int relatorioGeral(Lista *li, int pos, dados *cliente){
+    if(li == NULL){
+        return 0;
+    }
+    Elem *no = *li;
+    int i = 0;
+    while(no!=NULL && i<pos){
+        no = no->prox;
+        i++;
+    }
+    if(no==NULL){
+        return 0;
+    }else{
+        *cliente = no->infos;
+        return 1;
+    }
+}
+int buscaPorId(Lista *li, int cod, dados *cliente){
+    if(li == NULL){
+        return 0;
+    }
+    Elem *no = *li;
+    int i = 0;
+    while(no != NULL && no->infos.codigo != cod){
+        no = no->prox;
+        printf("%d", i++);
+    }
+    if(no == NULL){
+        return 0;
+    }else{
+        *cliente = no->infos;
         return 1;
     }
 }
 
-void relatorioGeral(Lista *li){
-    int pos = 0, i;
-    int tamanho = tamanhoLista(li);
-    for(i=0;i<tamanho;i++){
-        int x = buscaPos(li, pos, &cliente);
-        if(x){
-            printf("\nCódigo do Cliente: %d", cliente.id);
-            printf("\nNome do Cliente: %s", cliente.nome);
-            printf("\nEmpresa do Cliente:%s" cliente.empresa);
-            printf("\nDepartamento do Cliente: %s", cliente.departamento);
-            printf("\nTelefone do Cliente:%d ", cliente.telefone);
-            printf("\nCelular do Cliente:%d", cliente.celular);
-            printf("\nEmail do Cliente: %s\n", cliente.email);
-            pos++;
+int buscaNome(Lista *li, dados *cliente){//a função em si funciona de modo semelhante a busca por ID
+    if(li == NULL){
+        return 0;
+        printf("Erro na Lista!");
+   }
+    char nome[50];
+    printf("Digite o Nome que deseja buscar: ");
+    fflush(stdin);
+    gets(nome);
+
+    Elem *no = *li;
+    int i = 0;
+    int n = 0;
+    while(no != NULL){
+        n = strcmp(nome, no->infos.nome);// comparação do nome
+        if(n == 0){
+            break;
         }else{
-            printf("Erro na consulta\n");
+        no = no->prox;
         }
     }
-
+    if(no == NULL){
+        return 0;
+    }else{
+        *cliente = no->infos;
+        return 1;
+    }
 }
 
+int lista_vazia(Lista *li){
+    if(li == NULL){//Não existe lista
+        return 1;
+    }
+    if(*li == NULL){//Não tem nada na lista
+        return 1;
+    }
+    return 0;
+}
 
+int certeza(){
+    int option;
+    printf("Tem certeza que deseja remover o cliente acima?\n1-Sim\n2-Nao\nOpcao: ");
+    scanf("%d", &option);
+    if(option == 1){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int removeContato(Lista *li, int cod){
+    //int x;
+    printf("AAAAAAAAAAAAAAAAAAAA");
+    //x = certeza();
+    //printf("AAAAAAAAAAAAAAAAAAAA");
+
+            if(li == NULL){
+                printf("vai toma no cu");
+                return 0;
+                printf("If 1 passou");
+            }
+            Elem *no = *li;
+            while (no != NULL && no->infos.codigo != cod){
+                no = no->prox;
+            }
+            if(no == NULL){
+                return 0;
+                printf("If 2 passou");
+            }
+            if(no->ant = NULL){
+                *li = no->prox;
+            }else{
+                no->ant->prox = no->prox;
+            }
+            if(no->prox != NULL){
+                no->prox->ant = no->ant;
+            }
+            free(no);
+            return 1;
+}
