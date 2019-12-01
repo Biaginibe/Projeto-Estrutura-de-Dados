@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1574818590 source:c:\users\gabriel\desktop\projeto-estrutura-de-dados\@projeto_ed\lista.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lista.h"
+
+1574819796 c:\users\gabriel\desktop\projeto-estrutura-de-dados\@projeto_ed\lista.h
+
+1574819856 source:c:\users\gabriel\desktop\projeto-estrutura-de-dados\@projeto_ed\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<string.h>
+	"lista.h"
+
