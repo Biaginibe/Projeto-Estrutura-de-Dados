@@ -20,12 +20,12 @@ int main(){
         printf("\tLista de contatos\n\n");
         printf("0- Sair e encerrar o programa.\n"
                 "1- Insere de novo contato\n"
-                "2- Gerar e exibir relatório de contatos em forma de lista total\n"
-                "3- Gerar e exibir relatório individual com busca por identificador\n"
-                "4- Gerar e exibir relatório com busca por nome\n"
-                "5- Edição de dados do contato, escolhido por identificador\n"
+                "2- Gerar e exibir relatorio de contatos em forma de lista total\n"
+                "3- Gerar e exibir relatorio individual com busca por identificador\n"
+                "4- Gerar e exibir relatorio com busca por nome\n"
+                "5- Edicao de dados do contato, escolhido por identificador\n"
                 "6- Remover contato, escolhido por identificador\n"
-                "Opção:");
+                "Opcao:");
                 scanf("%d", &opcao);
 
                 switch(opcao){
@@ -34,18 +34,18 @@ int main(){
                         DontStop = 1;
                         break;
                     case 1:
-                        //ZARA ENT, VOU DEIXAR OS PARAMETROS VAZIOS MAS CONFORME A GENTE FOR VENDO O QUE PRECISA A GENTE VAI PREENCHENDO BLZ?
                         system("cls");
-                        printf("Digite o seu codigo: ");
+                        printf("\tINSERIR CONTATO\n\n");
+                        printf("Digite o codigo do cliente: ");
                         scanf("%d", &cliente.codigo);
-                        printf("Digite o seu nome: ");
+                        printf("Digite o nome do cliente: ");
                         fflush(stdin);
                         gets(cliente.nome);
                         printf("Digite o nome da empresa: ");
                         gets(cliente.empresa);
-                        printf("Em qual departamento você trabalha?");
+                        printf("Em qual departamento que ele trabalha?");
                         gets(cliente.departamento);
-                        printf("Digite seu email: ");
+                        printf("Digite o email do cliente: ");
                         gets(cliente.email);
                         printf("Telefone fixo para contato:");
                         scanf("%d", &cliente.telefone);
@@ -58,22 +58,18 @@ int main(){
                         }else{
                             printf("Erro ao inserir dados\n\n");
                         }
-
-                        tamanho = tamanhoLista(li);
-                        printf("o tamanho é %d", tamanho);
                         system("pause");
                         system("cls");
                         break;
                     case 2:
                         //apresentar todos os dados
-                        //relatorioTotal(li, &cliente);
                         system("cls");
+                        printf("\tEXIBIR TODOS OS CONTATOS\n\n");
                         tamanho = tamanhoLista(li);
-                        printf("o tamanho é %d\n", tamanho);
                         for(i=0;i<tamanho;i++){
                             int x = relatorioGeral(li, pos, &cliente);
                             if(x){
-                                printf("\nCódigo do Cliente: %d", cliente.codigo);
+                                printf("\nC�digo do Cliente: %d", cliente.codigo);
                                 printf("\nNome do Cliente: %s", cliente.nome);
                                 printf("\nEmpresa do Cliente: %s", cliente.empresa);
                                 printf("\nDepartamento do Cliente: %s", cliente.departamento);
@@ -92,16 +88,19 @@ int main(){
 
                         //apresentar todos os dados
                         system("cls");
+                        printf("\tEXIBIR CONTATO POR NOME \n\n");
                         printf("Digite o codigo que deseja procurar: ");
                         scanf("%d", &codigo);
-                        x = buscaPorId(li, codigo, &cliente);//o Id aqui vai ser o codigo né? Sim é o cod
+                        x = buscaPorId(li, codigo, &cliente);
                         if(x){
+                            printf("\nDados encontrados na busca...\n\n");
                             printf("Codigo: %d\n", cliente.codigo);
+                            printf("Nome do Cliente: %s\n", cliente.nome);
                             printf("Empresa: %s\n", cliente.empresa);
                             printf("Departamento: %s\n", cliente.departamento);
                             printf("Telefone: %d\n", cliente.telefone);
                             printf("Celular: %d\n", cliente.celular);
-                            printf("\nEmail do Cliente: %s\n", cliente.email);
+                            printf("Email do Cliente: %s\n", cliente.email);
                         }else{
                             printf("Erro na busca!!");
                         }
@@ -111,46 +110,65 @@ int main(){
                     case 4:
                         //apresentar todos os dados de um ou mais caras (caso tenha o mesmo nome)
                         system("cls");
-                      
-                        x = buscaNome(li, &cliente);//tirar duvida com ele de pq passou o endereço do aluno no exemplo
+                        printf("\tEXIBIR CONTATO POR ID \n\n");
+                        x = buscaNome(li, &cliente);
                         if(x){
                             printf("Codigo: %d\n", cliente.codigo);
+                            printf("Nome do Cliente: %s\n", cliente.nome);
                             printf("Empresa: %s\n", cliente.empresa);
                             printf("Departamento: %s\n", cliente.departamento);
                             printf("Telefone: %d\n", cliente.telefone);
                             printf("Celular: %d\n", cliente.celular);
-                            printf("\nEmail do Cliente: %s\n", cliente.email);
+                            printf("Email do Cliente: %s\n", cliente.email);
                         }else{
                             printf("Erro na busca!!");
-                            
+
                         }
                         system("pause");
                         system("cls");
                         break;
                     case 5:
-                        //aqui eu pensei em fazer uma função que leva pra uma 'pagina' onde a pessoa ve como tava
-                        //e digita como quer que fique e seria legal tb se a gente perguntasse se o usuario tem ctz
-                        //editaContato();
-                        break;
-                    case 6:
-                        //aqui tbm seria legal perguntar se tem ctz pq né... nao vai ter volta
-                        //sim é melhor
-                        //blz ent
                         system("cls");
-                        printf("Digite o codigo do cliente que você deseja remover: ");
+                        printf("\tEDITAR CONTATO\n\n");
+                        printf("Digite o codigo do cliente que voc� deseja editar: ");
                         scanf("%d", &codigo);
                         x = buscaPorId(li, codigo, &cliente);
                         if(x){
+                            printf("Dados atuais do cliente:\n\n");
                             printf("Codigo: %d\n", cliente.codigo);
+                            printf("Nome do Cliente: %s\n", cliente.nome);
                             printf("Empresa: %s\n", cliente.empresa);
                             printf("Departamento: %s\n", cliente.departamento);
                             printf("Telefone: %d\n", cliente.telefone);
                             printf("Celular: %d\n", cliente.celular);
-                            printf("\nEmail do Cliente: %s\n", cliente.email);
+                            printf("Email do Cliente: %s\n", cliente.email);
+                        }else{
+                            printf("Verifique se esse contato existe e tente novamente.");
+                        }
+                        x = editaContato(li, codigo);
+                        if(x){
+                            printf("\nInformacoes editadas com sucesso");
+                        }else{
+                            printf("\nA operacao foi cancelada.");
+                        }
+
+                        //editaContato();
+                        break;
+                    case 6:
+                        system("cls");
+                        printf("\tREMOVER CONTATO\n\n");
+                        printf("Digite o codigo do cliente que voc� deseja remover: ");
+                        scanf("%d", &codigo);
+                        x = buscaPorId(li, codigo, &cliente);
+                        if(x){
+                            printf("Codigo: %d\n", cliente.codigo);
+                            printf("Nome do Cliente\n: %s", cliente.nome);
+                            printf("Empresa: %s\n", cliente.empresa);
+                            printf("Departamento: %s\n", cliente.departamento);
+                            printf("Telefone: %d\n", cliente.telefone);
+                            printf("Celular: %d\n", cliente.celular);
+                            printf("Email do Cliente: %s\n", cliente.email);
                             //x = certeza();
-                            //printf("Tem certeza que deseja remover o cliente acima?\n1-sim\n2-não");
-                            //scanf("%d", meucu);
-                            //if(meucu == 1)
                                 x = removeContato(li, codigo);
                                 if(x){
                                 printf("Dados removidos com sucesso\n\n");
@@ -168,11 +186,12 @@ int main(){
 
                }
 
-               //NÃO COLOCAR NADA DEPOIS DISSO
+               //N�O COLOCAR NADA DEPOIS DISSO
 
     }
     salvaArq(li);
     destroiLista(li);
 
     return 0;
+
 }

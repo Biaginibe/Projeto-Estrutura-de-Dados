@@ -29,3 +29,18 @@
 	<string.h>
 	"lista.h"
 
+1575236350 source:c:\users\beatriz\desktop\projeto-estrutura-de-dados-master\@projeto_ed\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<string.h>
+	"lista.h"
+
+1575235440 c:\users\beatriz\desktop\projeto-estrutura-de-dados-master\@projeto_ed\lista.h
+
+1575236256 source:c:\users\beatriz\desktop\projeto-estrutura-de-dados-master\@projeto_ed\lista.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lista.h"
+
