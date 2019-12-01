@@ -214,3 +214,34 @@ int removeContato(Lista *li, int cod){
             free(no);
             return 1;
 }
+int leiaArq(Lista *li){
+    dados aux;
+    arq = fopen("arquivo.txt", "rb");
+    if(arq == NULL){
+        return 0;
+    }
+    while(1){
+        fread(&aux, sizeof(dados), 1, arq);
+        if(feof(arq)){
+            break;
+        }
+        insereContato(li, aux);
+    }
+    fclose(arq);
+    return 0;
+}
+
+void salvaArq(Lista *li){
+    dados *aux2;
+    aux2 = (dados*) calloc(tamanhoLista(li), sizeof(dados));
+    Elem *no = *li;
+    int i = 0;
+    arq = fopen("arquivo.txt", "wb");
+    while(no != NULL){
+        aux2[i] = no->infos;
+        fwrite(&aux2[i], sizeof(dados), 1, arq);
+        no = no->prox;
+        i++;
+    }
+    fclose(arq);
+}
