@@ -39,3 +39,9 @@ int lista_vazia(Lista *li);
 int certeza();
 
 int removeContato(Lista *li, int cod);
+
+FILE *arq;
+
+void salvaArq(Lista *li);
+
+int leiaArq(Lista *li);

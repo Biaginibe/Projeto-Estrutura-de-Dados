@@ -14,6 +14,8 @@ int main(){
     dados cliente;
     int pos = 0, i, tamanho;
     char nome[50];
+    leiaArq(li);
+
     while(DontStop == 0){
         printf("\tLista de contatos\n\n");
         printf("0- Sair e encerrar o programa.\n"
@@ -169,6 +171,8 @@ int main(){
                //NÃO COLOCAR NADA DEPOIS DISSO
 
     }
+    salvaArq(li);
     destroiLista(li);
+
     return 0;
 }
