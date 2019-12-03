@@ -214,7 +214,7 @@ int removeContato(Lista *li, int cod){
             }
             printf("\n\nIF 2 PASSOU");
             //IF 3
-            if(no->ant = NULL){//VERIFICA SE É O PRIMEIRO ELEMENTO DA LISTA
+            if(no->ant == NULL){//VERIFICA SE É O PRIMEIRO ELEMENTO DA LISTA
                 printf("\n\nENTROU NO IF 3");
                 *li = no->prox;
             }else{
