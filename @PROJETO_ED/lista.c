@@ -190,44 +190,36 @@ int lista_vazia(Lista *li){
     return 0;
 }
 
-//O ERRO DE ENDERECO ESTA DANDO NO ELSE ALI...
 int removeContato(Lista *li, int cod){
-    //int x;
-    printf("AAAAAAAAAAAAAAAAAAAA");
-    //x = certeza();
-    //printf("AAAAAAAAAAAAAAAAAAAA");
-
+    int ctz;
+    printf("Tem certeza que deseja editar essas informações?\n1-sim\n2-nao\nOpcao: ");
+    scanf("%d", &ctz);
+    if(ctz == 1){
             if(li == NULL){
-                printf("vai toma no cu");
                 return 0;
             }
-            printf("If 1 passou");
+
             Elem *no = *li;
-            printf("Criou o nó");
             while (no != NULL && no->infos.codigo != cod){
                 no = no->prox;
             }
-            printf("\n\nSAIU DO WHILE");
             //VERIFICA PASSOU PELA LISTA TODA E NÃO ENCONTROU O ELEMENTO
             if(no == NULL){
                 return 0;
             }
-            printf("\n\nIF 2 PASSOU");
-            //IF 3
             if(no->ant == NULL){//VERIFICA SE É O PRIMEIRO ELEMENTO DA LISTA
-                printf("\n\nENTROU NO IF 3");
                 *li = no->prox;
             }else{
-                printf("\n\nENTROU NO ELSE 3");
                 no->ant->prox = no->prox;
             }
-            printf("\n\nIF 3 PASSOU");
             if(no->prox != NULL){//REMOVE NO ULTIMO
-                printf("\n\nENTROU NO IF 4");
                 no->prox->ant = no->ant;
             }
             free(no);
             return 1;
+    }else{
+        return 0;
+    }
 }
 int leiaArq(Lista *li){
     dados aux;

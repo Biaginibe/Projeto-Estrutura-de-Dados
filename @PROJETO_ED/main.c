@@ -88,7 +88,7 @@ int main(){
 
                         //apresentar todos os dados
                         system("cls");
-                        printf("\tEXIBIR CONTATO POR NOME \n\n");
+                        printf("\tEXIBIR CONTATO POR ID \n\n");
                         printf("Digite o codigo que deseja procurar: ");
                         scanf("%d", &codigo);
                         x = buscaPorId(li, codigo, &cliente);
@@ -110,7 +110,7 @@ int main(){
                     case 4:
                         //apresentar todos os dados de um ou mais caras (caso tenha o mesmo nome)
                         system("cls");
-                        printf("\tEXIBIR CONTATO POR ID \n\n");
+                        printf("\tEXIBIR CONTATO POR NOME \n\n");
                         x = buscaNome(li, &cliente);
                         if(x){
                             printf("Codigo: %d\n", cliente.codigo);
@@ -143,13 +143,13 @@ int main(){
                             printf("Celular: %d\n", cliente.celular);
                             printf("Email do Cliente: %s\n", cliente.email);
                         }else{
-                            printf("Verifique se esse contato existe e tente novamente.");
+                            printf("Verifique se esse contato existe e tente novamente.\n");
                         }
                         x = editaContato(li, codigo);
                         if(x){
-                            printf("\nInformacoes editadas com sucesso");
+                            printf("\nInformacoes editadas com sucesso!!\n");
                         }else{
-                            printf("\nA operacao foi cancelada.");
+                            printf("\nA operacao foi cancelada.\n");
                         }
 
                         //editaContato();
@@ -168,12 +168,11 @@ int main(){
                             printf("Telefone: %d\n", cliente.telefone);
                             printf("Celular: %d\n", cliente.celular);
                             printf("Email do Cliente: %s\n", cliente.email);
-                            //x = certeza();
-                                x = removeContato(li, codigo);
+                            x = removeContato(li, codigo);
                                 if(x){
-                                printf("Dados removidos com sucesso\n\n");
+                                    printf("Dados removidos com sucesso\n\n");
                                 }else{
-                                printf("Erro ao remover dados\n\n");
+                                    printf("a operação foi cancelada!!n");
                                 }
 
                         }else{
